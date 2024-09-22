@@ -16,6 +16,6 @@ func main() {
 	fmt.Scan(&userWeight)
 
 	BMI := userWeight / math.Pow(userHeight/100, BMIPower)
-	fmt.Printf("Your BMI: %.0f", BMI)
-	//	fmt.Print(BMI)
+	result := fmt.Sprintf("Your BMI: %.0f", BMI)
+	fmt.Print(result)
 }
