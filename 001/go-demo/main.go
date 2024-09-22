@@ -10,12 +10,12 @@ func main() {
 	var userHeight float64
 	var userWeight float64
 	fmt.Println("Body mass index calculation.")
-	fmt.Print("Type in your height (meter): ")
+	fmt.Print("Type in your height (sm): ")
 	fmt.Scan(&userHeight)
 	fmt.Print("Type in your weight: ")
 	fmt.Scan(&userWeight)
 
-	BMI := userWeight / math.Pow(userHeight, BMIPower)
+	BMI := userWeight / math.Pow(userHeight/100, BMIPower)
 	fmt.Printf("Your BMI: %.0f", BMI)
 	//	fmt.Print(BMI)
 }
