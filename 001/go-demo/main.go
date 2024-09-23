@@ -6,14 +6,9 @@ import (
 )
 
 func main() {
-	var userHeight float64
-	var userWeight float64
 	fmt.Println("Body mass index calculation.")
-	fmt.Print("Type in your height (sm): ")
-	fmt.Scan(&userHeight)
-	fmt.Print("Type in your weight: ")
-	fmt.Scan(&userWeight)
-	BMI := calculateBMI(userWeight, userHeight)
+	userHeight, userWeight := getUserInput()
+	BMI := calculateBMI(userHeight, userWeight)
 	outputResult(BMI)
 }
 
@@ -22,8 +17,18 @@ func outputResult(bmi float64) {
 	fmt.Print(result)
 }
 
-func calculateBMI(userWeight float64, userHeight float64) float64 {
+func calculateBMI(userHeight float64, userWeight float64) float64 {
 	const BMIPower = 2
 	BMI := userWeight / math.Pow(userHeight/100, BMIPower)
 	return BMI
+}
+
+func getUserInput() (float64, float64) {
+	var userHeight float64
+	var userWeight float64
+	fmt.Print("Type in your height (sm): ")
+	fmt.Scan(&userHeight)
+	fmt.Print("Type in your weight: ")
+	fmt.Scan(&userWeight)
+	return userHeight, userWeight
 }
