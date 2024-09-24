@@ -9,6 +9,10 @@ func main() {
 	fmt.Println("Body mass index calculation.")
 	userHeight, userWeight := getUserInput()
 	BMI := calculateBMI(userHeight, userWeight)
+	isLean := BMI < 16
+	if isLean {
+		fmt.Println("You're underweight")
+	}
 	outputResult(BMI)
 }
 
