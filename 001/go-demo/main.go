@@ -11,17 +11,30 @@ func main() {
 	BMI := calculateBMI(userHeight, userWeight)
 	// isLean := BMI < 16
 	outputResult(BMI)
-	if BMI < 16 {
+	switch {
+	case BMI < 16:
 		fmt.Println("You're severely underweight")
-	} else if BMI < 18.5 {
+	case BMI < 18.5:
 		fmt.Println("You're underweight")
-	} else if BMI < 25 {
+	case BMI < 25:
 		fmt.Println("You have a normal body weight")
-	} else if BMI < 30 {
+	case BMI < 30:
 		fmt.Println("You are overweight")
-	} else if BMI >= 30 {
+	case BMI >= 30:
 		fmt.Println("You are obese")
 	}
+
+	// if BMI < 16 {
+	// 	fmt.Println("You're severely underweight")
+	// } else if BMI < 18.5 {
+	// 	fmt.Println("You're underweight")
+	// } else if BMI < 25 {
+	// 	fmt.Println("You have a normal body weight")
+	// } else if BMI < 30 {
+	// 	fmt.Println("You are overweight")
+	// } else if BMI >= 30 {
+	// 	fmt.Println("You are obese")
+	// }
 
 }
 
