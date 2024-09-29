@@ -13,7 +13,7 @@ func main() {
 		userHeight, userWeight := getUserInput()
 		BMI, err := calculateBMI(userHeight, userWeight)
 		if err != nil {
-			fmt.Println(err)
+			fmt.Println("Please write correct height or weight")
 			continue
 		}
 		outputResult(BMI)
@@ -43,7 +43,7 @@ func outputResult(bmi float64) {
 
 func calculateBMI(userHeight float64, userWeight float64) (float64, error) {
 	if userHeight <= 0 || userWeight <= 0 {
-		return 0, errors.New("Incorrect height or weight")
+		return 0, errors.New("incorrect height or weight")
 	}
 	const BMIPower = 2
 	BMI := userWeight / math.Pow(userHeight/100, BMIPower)
