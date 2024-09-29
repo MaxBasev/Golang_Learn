@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"math"
 )
@@ -10,7 +11,11 @@ func main() {
 	for {
 
 		userHeight, userWeight := getUserInput()
-		BMI := calculateBMI(userHeight, userWeight)
+		BMI, err := calculateBMI(userHeight, userWeight)
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
 		outputResult(BMI)
 		isRepeateCalcalation := checkRepeatCalculation()
 		if !isRepeateCalcalation {
@@ -36,10 +41,13 @@ func outputResult(bmi float64) {
 	}
 }
 
-func calculateBMI(userHeight float64, userWeight float64) float64 {
+func calculateBMI(userHeight float64, userWeight float64) (float64, error) {
+	if userHeight <= 0 || userWeight <= 0 {
+		return 0, errors.New("Incorrect height or weight")
+	}
 	const BMIPower = 2
 	BMI := userWeight / math.Pow(userHeight/100, BMIPower)
-	return BMI
+	return BMI, nil
 }
 
 func getUserInput() (float64, float64) {
