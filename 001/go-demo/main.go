@@ -15,6 +15,7 @@ func main() {
 		if err != nil {
 			fmt.Println("Please write correct height or weight")
 			continue
+			// panic("Please write correct height or weight")
 		}
 		outputResult(BMI)
 		isRepeateCalcalation := checkRepeatCalculation()
