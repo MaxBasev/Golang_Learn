@@ -6,41 +6,34 @@ import (
 )
 
 func main() {
-	fmt.Println("Body mass index calculation.")
-	userHeight, userWeight := getUserInput()
-	BMI := calculateBMI(userHeight, userWeight)
-	// isLean := BMI < 16
-	outputResult(BMI)
-	switch {
-	case BMI < 16:
-		fmt.Println("You're severely underweight")
-	case BMI < 18.5:
-		fmt.Println("You're underweight")
-	case BMI < 25:
-		fmt.Println("You have a normal body weight")
-	case BMI < 30:
-		fmt.Println("You are overweight")
-	case BMI >= 30:
-		fmt.Println("You are obese")
+
+	for {
+		fmt.Println("Body mass index calculation.")
+		userHeight, userWeight := getUserInput()
+		BMI := calculateBMI(userHeight, userWeight)
+		outputResult(BMI)
+		isRepeateCalcalation := checkRepeatCalculation()
+		if !isRepeateCalcalation {
+			break
+		}
 	}
-
-	// if BMI < 16 {
-	// 	fmt.Println("You're severely underweight")
-	// } else if BMI < 18.5 {
-	// 	fmt.Println("You're underweight")
-	// } else if BMI < 25 {
-	// 	fmt.Println("You have a normal body weight")
-	// } else if BMI < 30 {
-	// 	fmt.Println("You are overweight")
-	// } else if BMI >= 30 {
-	// 	fmt.Println("You are obese")
-	// }
-
 }
 
 func outputResult(bmi float64) {
 	result := fmt.Sprintf("Your BMI: %.0f", bmi)
 	fmt.Println(result)
+	switch {
+	case bmi < 16:
+		fmt.Println("You're severely underweight")
+	case bmi < 18.5:
+		fmt.Println("You're underweight")
+	case bmi < 25:
+		fmt.Println("You have a normal body weight")
+	case bmi < 30:
+		fmt.Println("You are overweight")
+	case bmi >= 30:
+		fmt.Println("You are obese")
+	}
 }
 
 func calculateBMI(userHeight float64, userWeight float64) float64 {
@@ -57,4 +50,14 @@ func getUserInput() (float64, float64) {
 	fmt.Print("Type in your weight: ")
 	fmt.Scan(&userWeight)
 	return userHeight, userWeight
+}
+
+func checkRepeatCalculation() bool {
+	var userChoise string
+	fmt.Print("Do you want to do another calculation (Y/N)?")
+	fmt.Scan(&userChoise)
+	if userChoise == "y" || userChoise == "Y" {
+		return true
+	}
+	return false
 }
