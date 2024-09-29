@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-
+	fmt.Println("Body mass index calculation.")
 	for {
-		fmt.Println("Body mass index calculation.")
+
 		userHeight, userWeight := getUserInput()
 		BMI := calculateBMI(userHeight, userWeight)
 		outputResult(BMI)
