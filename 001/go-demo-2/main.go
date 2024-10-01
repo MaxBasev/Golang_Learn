@@ -3,10 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	transactions := [3]int{1, 5, 8}
-	banks := [3]string{"AmeX", "Revolut"}
+	transactions := [5]int{1, 2, 3, 4, 5}
+	banks := [2]string{}
 
 	fmt.Println(transactions[0])
-	banks[2] = "Aktif"
+	banks[0] = "Aktif"
 	fmt.Println(banks)
+	partial := transactions[1:4]
+	fmt.Println(partial)
 }
